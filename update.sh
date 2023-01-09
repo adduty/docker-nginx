@@ -203,6 +203,7 @@ for branch in "${branches[@]}"; do
 
     for variant in \
         alpine-slim \
+        alpine-slim-libressl \
         debian; do \
         echo "$branch: $variant entrypoint scripts"
         dir="$branch/$variant"
