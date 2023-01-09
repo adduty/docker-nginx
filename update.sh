@@ -100,7 +100,8 @@ get_packages() {
 }
 
 get_packagerepo() {
-    local distro="${1%-perl}"
+    local distro="${1%-libressl}"
+    distro="${distro%-perl}"
     distro="${distro%-slim}"
     shift
     local branch="$1"
@@ -112,7 +113,7 @@ get_packagerepo() {
 }
 
 get_packagever() {
-    local distro="${1%-perl}"
+    local distro="${1%-perl*}"
     shift
     local branch="$1"
     shift
