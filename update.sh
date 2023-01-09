@@ -83,7 +83,7 @@ get_packages() {
 
     echo -n ' \\\n'
     case "$distro" in
-    *-slim)
+    *-slim*)
         for p in nginx; do
             echo -n '        '"$p"'=${NGINX_VERSION}-'"$r"'${PKG_RELEASE} \\'
         done
