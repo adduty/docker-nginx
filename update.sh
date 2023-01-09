@@ -126,13 +126,16 @@ get_packagever() {
 get_buildtarget() {
     local distro="$1"
     case "$distro" in
-        alpine-slim)
+        alpine-slim*)
             echo base
             ;;
-        alpine-perl)
+        alpine-perl*)
             echo module-perl
             ;;
         alpine)
+            echo module-geoip module-image-filter module-njs module-xslt
+            ;;
+        alpine-libressl)
             echo module-geoip module-image-filter module-njs module-xslt
             ;;
         debian)
@@ -156,7 +159,7 @@ __EOF__
 
 for branch in "${branches[@]}"; do
     for variant in \
-        alpine{,-perl,-slim} \
+        alpine{,-libressl,-perl,-perl-libressl,-slim,-slim-libressl} \
         debian{,-perl}; do
         echo "$branch: $variant dockerfiles"
         dir="$branch/$variant"
